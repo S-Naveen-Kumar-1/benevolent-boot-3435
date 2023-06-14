@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpackers Buddy/Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="nav">
+        <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
+        <a href="index.html"><span>HOME</span></a>
+        <a href="">POPULAR DESTINATIONS</a>
+        <a href="login.html">LOGIN</a>
+        <a href="./singnup.html">SIGNUP</a>
+        <a href="contact.html">CONTACTS</a>
+    </div>
+    <table>
+        <th></th>
+        <tbody>
+            <tr>
+                <td>Name :</td>
+                <td><input type="text" name="" id="name"></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><input type="text" name="" id="email"></td>
+            </tr>
+            <tr>
+                <td>Mobile :</td>
+                <td><input type="number" name="" id="mobile"></td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td><input type="text" name="" id="password"></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="submit">Submit</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+<script>
+    let name=document.getElementById("name");
+    let email=document.getElementById("email");
+    let mobile=document.getElementById("mobile");
+    let password=document.getElementById("password");
+    let submit=document.getElementById("submit");
+
+    let singnupData=JSON.parse(localStorage.getItem("signup")) || []
+    
+    submit.addEventListener("click",function(){
+        if(name.value===""){
+           return alert ("Enter Your Name")
+        }
+        else if(email.value===""){
+           return alert ("Enter Your Email")
+        }
+        else if (mobile.value===""){
+            return alert('Enter Your Number')
+        }
+        else if (password.value===""){
+            return  alert('Enter Your Password')
+        }
+        else if(password.value.length<6){
+            return alert("Password should have atleast 6 characters")
+        }
+        else if(password!==""){
+        for(i=0;i<singnupData.length;i++){
+            if(singnupData[i].email===email.value){
+                return alert("Email already registered")
+            }
+            else if(singnupData[i].number===mobile.value){
+                return alert("Number already registered")
+            }
+        }
+    }
+        let singnup={
+            name:name.value,
+            email:email.value,
+            number:mobile.value,
+            password:password.value
+        }
+        singnupData.push(singnup);
+        localStorage.setItem("signup",JSON.stringify(singnupData))
+
+    })
+
+</script>

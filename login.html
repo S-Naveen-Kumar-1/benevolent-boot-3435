@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpackers Buddy/Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table{
+            align-items:center;
+            margin-top: 50px;
+            margin-left: 40%;
+            font-size: 25px;
+        }
+      
+       #submit{
+        font-size: 20px;
+        border-radius: 10px;
+        color: green;
+       }
+      
+    
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
+        <a href="index.html"><span>HOME</span></a>
+        <a href="">POPULAR DESTINATIONS</a>
+        <a href="login.html">LOGIN</a>
+        <a href="./singnup.html">SIGNUP</a>
+        <a href="contact.html">CONTACTS</a>
+    </div>
+    <table>
+        <div id="table">
+            <tbody>
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="text" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Password :</td>
+                    <td><input type="text" id="password"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="submit">Submit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+      
+ 
+</body>
+</html>
+
+<script>
+    let singnupData=JSON.parse(localStorage.getItem("signup"));
+    let email=document.getElementById("email");
+    let password=document.getElementById("password");
+    let submit=document.getElementById("submit");
+
+    submit.addEventListener("click",function(){
+     if(singnupData.length>0){
+        for(let i=0;i<singnupData.length;i++){
+        if(singnupData[i].email===email.value && singnupData[i].password===password.value){
+            alert("Login Sucess")
+            
+            return;
+        }  
+    }
+}
+if(email.value===""){
+return alert("Enter Your Email")
+}
+else if(password.value===""){
+return alert("Enter Your Password")
+}
+            alert("Invalid Credentials")
+    })
+</script>
