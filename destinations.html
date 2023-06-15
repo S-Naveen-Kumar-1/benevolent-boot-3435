@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpackers Buddy/Destinations</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+          box-sizing: border-box;   
+        }
+        #show{
+       width: 90%;
+       margin: auto;
+        margin-top: 10px;
+        text-align: justify;
+        justify-content: end;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        /* border: 1px solid red; */
+        gap: 15px;
+        text-align: center;
+    }
+    #show>div{
+        border-radius: 20px;
+        box-shadow: 0 60px 80px rgba(0,0,0,0.60), 0 45px 26px rgba(0,0,0,0.14);    
+        /* border: 1px solid rgb(164, 164, 169); */
+    }
+
+    #show>div>img{
+        width: 100%;
+        height: 300px;
+        border-radius: 15px
+    }
+    #show>div>p:nth-child(3){
+        height: 150px;
+    }
+    #search{
+        width: 350px;
+        text-align: center;
+        border-radius: 10px;
+        margin-right: 100px;
+    }
+</style>
+</head>
+<body>
+    <div id="nav">
+        <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
+        <a href="index.html"><span>HOME</span></a>
+        <input type="search" id="search" placeholder="Search Your Favourite Destination">
+        <!-- <a href="login.html">LOGIN</a> -->
+        <!-- <a href="./singnup.html">SIGNUP</a> -->
+        <select name="" id="sort">
+            <option value="">Sort</option>
+            <option value="low">Low Price</option>
+            <option value="high">High Price</option>
+
+        </select>
+        
+        <a href="booking.html">BOOKINGS</a>
+    </div>
+    <div id="show"></div>
+</body>
+</html>
+<script src="./destinations.js"></script>
