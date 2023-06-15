@@ -3,18 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backpackers Buddy</title>
+    <title>Backpackers Buddy/Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    background-color: #5f829b;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJU0LP7nTeuYdh6sWmpAR5jscUNqPIO-s7jQ&usqp=CAU");
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+        #home{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: white;
+        }
+
+        #home>p:nth-child(1){
+            font-size: 80px;
+            color: rgb(240, 231, 231);
+            font-weight: bold;
+            /* margin-left: 30%; */
+        }
+        #home>p:nth-child(2){
+            margin-left: 15%;
+            margin-top: -70px;
+            color: rgb(240, 231, 231);
+            font-size: 40px;
+
+        }
+        #destinations{
+            display: flex;
+            /* border: 1px solid; */
+            justify-content: center;
+            gap: 305px;
+            text-align: center;
+            color: white;
+        }
+        #destinations>div>img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
     <div id="nav">
         <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
         <a href="index.html"><span>HOME</span></a>
-        <a href="">POPULAR DESTINATIONS</a>
+        <a href="destinations.html">POPULAR DESTINATIONS</a>
         <a href="login.html">LOGIN</a>
         <a href="./singnup.html">SIGNUP</a>
-        <a href="contact.html">CONTACTS</a>
+        <a href="booking.html">BOOKINGS</a>
     </div>
+
+    <div id="home">
+        <P>Backpackers Buddy</P>
+        <p>Your Best Travel Companion</p>
+    </div>
+    <a href="destinations.html" id="destinations"></a>
+ 
 </body>
 </html>
+<script src="./index.js"></script>
 
