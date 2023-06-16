@@ -3,6 +3,9 @@ body {
     /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJU0LP7nTeuYdh6sWmpAR5jscUNqPIO-s7jQ&usqp=CAU"); */
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
 }
 #nav{
     width: 90%;
