@@ -9,6 +9,15 @@
         * {
           box-sizing: border-box;   
         }
+        span {
+            padding-right: 50px;
+        }
+        button {
+            border-radius: 10px;
+            color: blue;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
         #show{
        width: 90%;
        margin: auto;
@@ -23,6 +32,7 @@
     }
     #show>div{
         border-radius: 20px;
+        background-color: #8fa3b2;
         box-shadow: 0 60px 80px rgba(0,0,0,0.60), 0 45px 26px rgba(0,0,0,0.14);    
         /* border: 1px solid rgb(164, 164, 169); */
     }
@@ -46,10 +56,12 @@
 <body>
     <div id="nav">
         <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
-        <a href="index.html"><span>HOME</span></a>
+        <!-- <a href="index.html"><span>HOME</span></a> -->
         <input type="search" id="search" placeholder="Search Your Favourite Destination">
         <!-- <a href="login.html">LOGIN</a> -->
         <!-- <a href="./singnup.html">SIGNUP</a> -->
+        <a href="booking.html">BOOKINGS</a>
+        <a href="payment.html">CHECK OUT</a>
         <select name="" id="sort">
             <option value="">Sort</option>
             <option value="low">Low Price</option>
@@ -57,7 +69,6 @@
 
         </select>
         
-        <a href="booking.html">BOOKINGS</a>
     </div>
     <div id="show"></div>
 </body>

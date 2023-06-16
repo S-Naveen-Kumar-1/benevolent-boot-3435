@@ -1,19 +1,318 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+  <title>Tourism Website - Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+     #cart{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            /* border: 1px solid; */
+            margin-top: 50px;
+            gap: 50px;
+            text-align: center;
+            color: white;
+        }
+     #cart>div>img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+  </style>
 </head>
 <body>
-    <div id="nav">
-        <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
-        <a href="index.html"><span>HOME</span></a>
-        <a href="destinations.html">POPULAR DESTINATIONS</a>
-        <!-- <a href="login.html">LOGIN</a> -->
-        <!-- <a href="./singnup.html">SIGNUP</a> -->
-        <a href="booking.html">BOOKINGS</a>
+  <div id="nav">
+    <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
+    <a href="index.html"><span>HOME</span></a>
+    <a href="destinations.html">POPULAR DESTINATIONS</a>
+    <!-- <a href="login.html">LOGIN</a> -->
+    <!-- <a href="./singnup.html">SIGNUP</a> -->
+    <a href="booking.html">BOOKINGS</a>
+</div>
+    <div id="cart"></div>
+    <h1 id="total"></h1>
+    <div id="paymentdisplay" style="display: none;">
+      <label >Payment Method:</label>
+      <select id="paymentmethod" name="payment-method" required>
+        <option value="">Select</option>
+        <option value="creditcard">Credit Card</option>
+        <option value="wallet">UPI</option>
+        <option value="bank">Bank Transfer</option>
+      </select>
     </div>
+    <h1 id="buysomething"></h1>
+    
+
+    <div id="cardpayment" style="display: none;">
+        <table>
+            <tr>
+                <td> <label>Card Number:</label>
+                </td>
+                <td>
+                    <input type="text" id="card-number" name="card-number" required>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="card-holder">Card Holder:</label>
+                </td>
+                <td><input type="text" id="card-holder" name="card-holder" required></td>
+            </tr>
+            <tr>
+                <td><label for="expiry-date">Expiry Date:</label></td>
+                <td><input type="text" id="expiry-date" name="expiry-date" required></td>
+            </tr>
+            <tr>
+                <td> <label for="cvv">CVV:</label></td>
+                <td><input type="text" id="cvv" name="cvv" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="buy1">Buy Package</button>
+                </td>
+            </tr>
+        </table>  
+    </div>
+        <div id="bankpayment" style="display: none;">
+            <table>
+                <tr>
+                    <td> <label>Username:</label>
+                    </td>
+                    <td>
+                        <input type="text"  required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Password:</label>
+                    </td>
+                    <td><input required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="buy2">Buy Package</button>
+                    </td>
+                </tr>
+            </table>  
+            </div>
+
+            <div id="walletpayment" style="display: none;">
+                <table>
+                    <tr>
+                        <td> <label>Mobile/Username/VPA: </label>
+                        </td>
+                        <td>
+                            <input type="text"  required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Password:</label>
+                        </td>
+                        <td><input required></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button id="buy3">Buy Package</button>
+                        </td>
+                    </tr>
+                </table>  
+                </div>
+
+  <script>
+    let paymentMethod = document.getElementById("paymentmethod");
+    let cardPayment= document.getElementById("cardpayment");
+    let bankPayment=document.getElementById("bankpayment");
+    let walletPayment=document.getElementById("walletpayment");
+    let buy1=document.getElementById("buy1");
+    let buy2=document.getElementById("buy2");
+    let buy3=document.getElementById("buy3");
+    let totalprice=document.getElementById("total");
+    let paymentdisplay=document.getElementById("paymentdisplay")
+    let buysomething=document.getElementById("buysomething")
+   
+
+
+
+    
+    paymentMethod.addEventListener("change", function() {
+      if (paymentMethod.value === "creditcard") {
+        cardPayment.style.display = "block";
+        bankPayment.style.display = "none";
+        walletPayment.style.display = "none";
+      }
+      else if(paymentMethod.value==="wallet"){
+        walletPayment.style.display = "block";
+        bankPayment.style.display = "none";
+        cardPayment.style.display = "none";
+      }
+       else if(paymentMethod.value === "bank") {
+        bankPayment.style.display = "block";
+        cardPayment.style.display = "none";
+        walletPayment.style.display = "none";
+      }
+     
+      else{
+        cardPayment.style.display = "none";
+        bankPayment.style.display = "none";
+        walletPayment.style.display = "none";
+      }
+    });
+
+    
+let buypackage=JSON.parse(localStorage.getItem("package")) || []
+let arr=JSON.parse(localStorage.getItem("bought")) || []
+let container=document.getElementById("cart");
+totalprice.innerText;
+// console.log(typeof totalprice.innerText)
+
+if(buypackage.length>0){
+      paymentdisplay.style.display="block"
+    }
+    else{
+alert("Please Buy Some Packages")
+window.open("destinations.html")
+    }
+let pricetotal=0;
+for(let i=0;i<buypackage.length;i++){
+  console.log(typeof buypackage[i].price)
+  pricetotal+=buypackage[i].price
+}
+totalprice.innerText="Your Total package price is :"+pricetotal+"\n"+"\n"+"Please use below payment methods to buy your package"
+
+
+display(buypackage)
+    function display(data){
+      container.innerHTML=null;
+      data.map(function(e){
+        // console.log(e)
+        let card=document.createElement("div");
+        let place=document.createElement("h2");
+        let price=document.createElement("p")
+        let plus=document.createElement("button")
+        let person=document.createElement("span")
+        let minus=document.createElement("button")
+        let img=document.createElement("img")
+        let delete1=document.createElement("button")
+
+        place.innerText=e.place+" Package";
+        price.innerText="Price: "+e.price;
+        img.setAttribute("src",e.img)
+        plus.innerText="+";
+        person.innerText="No of Peroson's :"+e.quantity
+        minus.innerText="-";
+        delete1.innerText="Delete"
+        card.append(img,place,price,plus,person,minus,delete1);
+        container.append(card)
+        
+    buy1.addEventListener("click",function(){
+        console.log("hi")
+        price.innerText="";
+        for(let i=0;i<arr.length;i++){
+              if(arr[i].id===e.id){
+                return 
+                break;
+              }
+              // else{
+              //   return alert("Package bought successfully")
+              //   break;
+              // }
+        }
+        alert ("Package bought successfully")
+        window.open("booking.html")
+        arr.push(e)
+        localStorage.setItem("bought",JSON.stringify(arr))
+
+          
+         buypackage=buypackage.filter(function(el){
+          return el.id!=e.id
+        })
+        localStorage.setItem("package",JSON.stringify(buypackage))
+        display(buypackage)
+    })
+    buy2.addEventListener("click",function(){
+        console.log("hi")
+        price.innerText="";
+        for(let i=0;i<arr.length;i++){
+              if(arr[i].id===e.id){
+                return 
+                break;
+              }
+              // else{
+              //   return alert("Package bought successfully")
+              //   break;
+              // }
+        }
+        alert ("Package bought successfully")
+        window.open("booking.html")
+        arr.push(e)
+        localStorage.setItem("bought",JSON.stringify(arr))
+
+          
+        buypackage=buypackage.filter(function(el){
+          return el.id!=e.id
+        })
+        localStorage.setItem("package",JSON.stringify(buypackage))
+        display(buypackage)
+        price.innerText="";
+
+    })
+    buy3.addEventListener("click",function(){
+        console.log("hi")
+        price.innerText="";
+        for(let i=0;i<arr.length;i++){
+              if(arr[i].id===e.id){
+                return
+                break;
+              }
+              // else{
+              //   return alert("Package bought successfully")
+              //   break;
+              // }
+        }
+       
+        alert ("Package bought successfully")
+        window.open("booking.html")
+        buypackage.push(e)
+        localStorage.setItem("package",JSON.stringify(arr))
+
+        buypackage=buypackage.filter(function(el){
+          return el.id != e.id
+        })
+        localStorage.setItem("package",JSON.stringify(buypackage))
+        display(buypackage)
+        price.innerText="";
+    })
+    
+    delete1.addEventListener("click",function(){
+      buypackage=buypackage.filter(function(el){
+          return el.id != e.id
+        })
+        localStorage.setItem("package",JSON.stringify(buypackage))
+        display(buypackage)
+        pricetotal-=e.price*e.quantity
+        totalprice.innerText=pricetotal
+    })      
+      plus.addEventListener("click",function(){
+        e.quantity++;
+        person.innerText="No of Peroson's :"+e.quantity
+        price.innerText="Price: "+(e.price*e.quantity);
+        pricetotal+=e.price*1
+        totalprice.innerText=pricetotal
+        })
+        minus.addEventListener("click",function(){
+          if(e.quantity>1){
+            e.quantity--;
+        person.innerText="No of Peroson's :"+e.quantity
+        price.innerText="Price: "+(e.price*e.quantity);
+        pricetotal-=e.price*1
+        totalprice.innerText=pricetotal
+          }
+      
+        })
+      })
+     
+    }
+   
+    
+  </script>
 </body>
 </html>

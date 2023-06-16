@@ -5,17 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backpackers Buddy/Bookings</title>
     <link rel="stylesheet" href="style.css">
+         <style>
+     #cart{
+            display: flex;
+            width: 80%;
+            /* border: 1px solid; */
+            gap: 305px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin: auto;
+            margin-top: 60px;
+        }
+        h1{
+            display: flex;
+            width: 80%;
+            /* border: 1px solid; */
+            gap: 305px;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin: auto;
+            margin-top: 30px;
+
+        }
+     #cart>div>img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
  
 </head>
 
 <body>
     <div id="nav">
         <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
-        <a href="index.html"><span>HOME</span></a>
-        <a href="destinations.html">POPULAR DESTINATIONS</a>
-        <a href="login.html">LOGIN</a>
-        <a href="./singnup.html">SIGNUP</a>
+        <a href="index.html">HOME</a>
+        <!-- <a href="booking.html"><span>C</span></a> -->
+        
+        <a href="payment.html">CHECK OUT</a>
+        <!-- <a href="./singnup.html">SIGNUP</a> -->
         <a href="booking.html">BOOKINGS</a>
     </div>
+    <!-- <h1></h1> -->
+    <div id="cart"></div>
 </body>
 </html>
+<script>
+    // let h1=document.querySelector("h1")
+    arr=JSON.parse(localStorage.getItem("bought")) ||[]
+    arr1=JSON.parse(localStorage.getItem("package")) ||[]
+    // if (boughtpackage.length>0){
+    //   h1.innerText="Packages bought"
+    // }
+    if(arr.length<=0){
+        alert("Its Empty, Please Buy Some Packages")
+      window.open("destinations.html") 
+   }
+   
+    let container=document.getElementById("cart")
+    display(arr)
+    function display(data){
+    //   container.innerHTML=null;
+      data.map(function(e){
+        console.log(e)
+        let card=document.createElement("div");
+        let place=document.createElement("h2");
+        let img=document.createElement("img")
+
+        place.innerText=e.place;
+        img.setAttribute("src",e.img)
+        card.append(img,place);
+        container.append(card)
+      })
+    }
+</script>
