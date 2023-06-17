@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backpackers Buddy/Home</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    background-color: #5f829b;
+    background-image: url("./check1.png");
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+        #home{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: white;
+        }
+
+        #home>p:nth-child(1){
+            font-size: 80px;
+            color: rgb(240, 231, 231);
+            font-weight: bold;
+            /* margin-left: 30%; */
+        }
+        #home>p:nth-child(2){
+            margin-left: 15%;
+            margin-top: -70px;
+            color: rgb(240, 231, 231);
+            font-size: 40px;
+
+        }
+        #destinations{
+            display: flex;
+            /* border: 1px solid; */
+            justify-content: center;
+            gap: 305px;
+            text-align: center;
+            color: white;
+        }
+        #destinations>div>img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <a href="destinations.html">DESTINATIONS</a>
+        <a href="booking.html">BOOKING</a>
+        <a href="homepage.html"><img id="logo" src="./Logo.png" alt=""></a>
+        <!-- <a href="index.html"><span>HOME</span></a> -->
+        <a href="payment.html">CHECK OUT</a>
+        <a href="./index.html">LOGOUT</a>
+    </div>
+    
+
+    <div id="home">
+        <P>Backpackers Buddy</P>
+        <p>Your Best Travel Companion</p>
+    </div>
+    <a href="destinations.html" id="destinations"></a>
+ 
+</body>
+</html>
+<script src="./index.js"></script>
+

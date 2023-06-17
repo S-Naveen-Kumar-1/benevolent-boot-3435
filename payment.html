@@ -14,24 +14,66 @@
             text-align: center;
             color: white;
         }
-     #cart>div>img{
+     #cart>div>img:nth-child(1){
             width: 100px;
             height: 100px;
             border-radius: 50%;
+        }
+        #cart>div>img:nth-child(7){
+            width: 30px;
+            display: flex;
+            /* padding-top: 50px; */
+            /* height: 100px; */
+            border-radius: 50%;
+            /* border: 1px solid red; */
+            gap: 15px;
+            margin-left: 300px;
+            margin-top: -27px;
+        }
+        #invoice>tbody>tr>td:nth-child(2){
+        text-align: end;
+        color: rgb(140, 246, 168);
+        }
+        #paymentdisplay{
+          display: flex;
+          text-align: center;
+          margin-left: 50px;
+          margin-top: 50px;
+          font-size: 20px;
+          font-weight: bold;
+          color: rgb(39, 37, 36);
+        }
+        #invoice>tbody>tr>td:nth-child(1){
+          color: rgb(193, 209, 209);
         }
   </style>
 </head>
 <body>
   <div id="nav">
-    <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
-    <a href="index.html"><span>HOME</span></a>
+    <a href="homepage.html"><img id="logo" src="./Logo.png" alt=""></a>
+    <a href="homepage.html"><span>HOME</span></a>
     <a href="destinations.html">POPULAR DESTINATIONS</a>
     <!-- <a href="login.html">LOGIN</a> -->
     <!-- <a href="./singnup.html">SIGNUP</a> -->
     <a href="booking.html">BOOKINGS</a>
 </div>
     <div id="cart"></div>
-    <h1 id="total"></h1>
+    <table border="1px solid" id="invoice" cellspacing="0"  >
+      <tbody>
+          <tr>
+            <td colspan="2" style="text-align: center; color: rgb(222, 140, 140);">INVOICE</td>
+          </tr>
+          <tr>
+            <td>Total number of Packages</td>
+            <td id="number"></td>
+          </tr>
+      
+        <tr>
+          <td>Total price</td>
+          <td id="amount"></td>
+        </tr>
+      </tbody>
+    </table>
     <div id="paymentdisplay" style="display: none;">
       <label >Payment Method:</label>
       <select id="paymentmethod" name="payment-method" required>
@@ -41,7 +83,6 @@
         <option value="bank">Bank Transfer</option>
       </select>
     </div>
-    <h1 id="buysomething"></h1>
     
 
     <div id="cardpayment" style="display: none;">
@@ -74,6 +115,7 @@
         </table>  
     </div>
         <div id="bankpayment" style="display: none;">
+         
             <table>
                 <tr>
                     <td> <label>Username:</label>
@@ -129,6 +171,9 @@
     let paymentdisplay=document.getElementById("paymentdisplay")
     let buysomething=document.getElementById("buysomething")
    
+    let no_of_packages=document.getElementById("number");
+    let no_of_persons=document.getElementById("count");
+    let total_price=document.getElementById("amount")
 
 
 
@@ -161,8 +206,8 @@
 let buypackage=JSON.parse(localStorage.getItem("package")) || []
 let arr=JSON.parse(localStorage.getItem("bought")) || []
 let container=document.getElementById("cart");
-totalprice.innerText;
 // console.log(typeof totalprice.innerText)
+no_of_packages.innerText=buypackage.length
 
 if(buypackage.length>0){
       paymentdisplay.style.display="block"
@@ -176,7 +221,7 @@ for(let i=0;i<buypackage.length;i++){
   console.log(typeof buypackage[i].price)
   pricetotal+=buypackage[i].price
 }
-totalprice.innerText="Your Total package price is :"+pricetotal+"\n"+"\n"+"Please use below payment methods to buy your package"
+total_price.innerText=pricetotal;
 
 
 display(buypackage)
@@ -191,7 +236,7 @@ display(buypackage)
         let person=document.createElement("span")
         let minus=document.createElement("button")
         let img=document.createElement("img")
-        let delete1=document.createElement("button")
+        let delete1=document.createElement("img")
 
         place.innerText=e.place+" Package";
         price.innerText="Price: "+e.price;
@@ -199,7 +244,7 @@ display(buypackage)
         plus.innerText="+";
         person.innerText="No of Peroson's :"+e.quantity
         minus.innerText="-";
-        delete1.innerText="Delete"
+        delete1.setAttribute("src","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9k84pqqyAEtYysVu-ujy-yc-Q84_idaInZQ&usqp=CAU")
         card.append(img,place,price,plus,person,minus,delete1);
         container.append(card)
         
@@ -289,14 +334,15 @@ display(buypackage)
         localStorage.setItem("package",JSON.stringify(buypackage))
         display(buypackage)
         pricetotal-=e.price*e.quantity
-        totalprice.innerText=pricetotal
+        total_price.innerText=pricetotal
+        no_of_packages.innerText--
     })      
       plus.addEventListener("click",function(){
         e.quantity++;
         person.innerText="No of Peroson's :"+e.quantity
         price.innerText="Price: "+(e.price*e.quantity);
         pricetotal+=e.price*1
-        totalprice.innerText=pricetotal
+        total_price.innerText=pricetotal;
         })
         minus.addEventListener("click",function(){
           if(e.quantity>1){
@@ -304,7 +350,7 @@ display(buypackage)
         person.innerText="No of Peroson's :"+e.quantity
         price.innerText="Price: "+(e.price*e.quantity);
         pricetotal-=e.price*1
-        totalprice.innerText=pricetotal
+        total_price.innerText=pricetotal;
           }
       
         })

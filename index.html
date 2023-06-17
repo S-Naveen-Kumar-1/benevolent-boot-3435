@@ -46,15 +46,24 @@
             height: 100px;
             border-radius: 50%;
         }
+        h2 {
+            text-align: center;
+            color: rgb(8, 8, 8);
+        }
+        h1{
+            text-align: center;
+            color: rgb(84, 74, 74);
+
+        }
     </style>
 </head>
 <body>
     <div id="nav">
-        <a href="destinations.html">DESTINATIONS</a>
-        <a href="booking.html">BOOKING</a>
+        <a href="index.html">DESTINATIONS</a>
+        <a href="index.html">BOOKING</a>
         <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
         <!-- <a href="index.html"><span>HOME</span></a> -->
-        <a href="login.html">LOGIN</a>
+        <a href="index.html">LOGIN</a>
         <a href="./singnup.html">SIGNUP</a>
     </div>
     
@@ -64,8 +73,60 @@
         <p>Your Best Travel Companion</p>
     </div>
     <a href="destinations.html" id="destinations"></a>
- 
+  <h1>Please Login to Explore </h1>
+
+    <table>
+        <div id="table">
+            <tbody>
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Password :</td>
+                    <td><input type="text" id="password"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="submit">Submit</button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <h2>New users: Please Signup to create new account </h2>
+
 </body>
 </html>
-<script src="./index.js"></script>
+<!-- <script src="./index.js"></script> -->
+<script>
+    let singnupData=JSON.parse(localStorage.getItem("signup")) ||[];
+    let email=document.getElementById("email");
+    let password=document.getElementById("password");
+    let submit=document.getElementById("submit");
+
+    submit.addEventListener("click",function(){
+     if(singnupData.length>0){
+        for(let i=0;i<singnupData.length;i++){
+        if(singnupData[i].email===email.value && singnupData[i].password===password.value){
+            alert("Login Sucess")
+            // submit.addEventListener("click",function(){
+                window.open("homepage.html")
+            // })
+            return;
+        }  
+    }
+}
+if(email.value===""){
+return alert("Enter Your Email")
+}
+else if(password.value===""){
+return alert("Enter Your Password")
+}
+            alert("Invalid Credentials / Signup to Create Account")
+            // submit.addEventListener("click",function(){
+            //     window.open("index.html")
+            // })
+    })
+</script>
 
