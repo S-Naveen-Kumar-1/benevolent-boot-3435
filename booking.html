@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
          <style>
      #cart{
-            display: flex;
+            display: grid;
             width: 80%;
+            grid-template-columns: repeat(4,1fr);
             /* border: 1px solid; */
-            gap: 305px;
+            gap: 50px;
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -25,9 +26,9 @@
             gap: 305px;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: rgb(205, 167, 167);
             margin: auto;
-            margin-top: 30px;
+            margin-top: 80px;
 
         }
      #cart>div>img{
@@ -41,15 +42,15 @@
 
 <body>
     <div id="nav">
-        <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
-        <a href="index.html">HOME</a>
+        <a href="homepage.html"><img id="logo" src="./Logo.png" alt=""></a>
+        <a href="homepage.html">HOME</a>
         <!-- <a href="booking.html"><span>C</span></a> -->
         
         <a href="payment.html">CHECK OUT</a>
         <!-- <a href="./singnup.html">SIGNUP</a> -->
-        <a href="booking.html">BOOKINGS</a>
+        <a href="index.html">LOGOUT</a>
     </div>
-    <!-- <h1></h1> -->
+    <h1 id="thanks" style="display: none;">Thanks for Buying Following Packages</h1>
     <div id="cart"></div>
 </body>
 </html>
@@ -60,6 +61,10 @@
     // if (boughtpackage.length>0){
     //   h1.innerText="Packages bought"
     // }
+    let thanks=document.getElementById("thanks")
+    if(arr.length>0){
+        thanks.style.display="block"
+    }
     if(arr.length<=0){
         alert("Its Empty, Please Buy Some Packages")
       window.open("destinations.html") 

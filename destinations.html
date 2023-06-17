@@ -9,12 +9,22 @@
         * {
           box-sizing: border-box;   
         }
-        span {
-            padding-right: 50px;
-        }
+        #nav{
+    width: 90%;
+    display: flex;
+    /* height: 300px; */
+    /* border: 1px solid red; */
+    text-align: center;
+    /* justify-content: space-around; */
+    margin: auto;
+    align-items: center;
+    color: rgb(144, 144, 131);
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
         button {
             border-radius: 10px;
-            color: blue;
+            color: rgb(120, 120, 242);
             font-size: 15px;
             margin-bottom: 15px;
         }
@@ -44,28 +54,38 @@
     }
     #show>div>p:nth-child(3){
         height: 150px;
+        color: rgb(67, 65, 65);
+    }
+    #show>div>span:nth-child(4){
+        height: 150px;
+        color: rgb(218, 223, 226);
+        border: 1px solid rgb(102, 102, 143);
+        width: 10%;
+        border-radius: 5px;
+        background-color:#367dc3;
+        text-align: center;
+        margin-right: 50px;
     }
     #search{
         width: 350px;
         text-align: center;
         border-radius: 10px;
         margin-right: 100px;
+        height: 30px;
     }
 </style>
 </head>
 <body>
     <div id="nav">
-        <a href="index.html"><img id="logo" src="./Logo.png" alt=""></a>
+        <a href="homepage.html"><img id="logo" src="./Logo.png" alt=""></a>
         <!-- <a href="index.html"><span>HOME</span></a> -->
         <input type="search" id="search" placeholder="Search Your Favourite Destination">
-        <!-- <a href="login.html">LOGIN</a> -->
-        <!-- <a href="./singnup.html">SIGNUP</a> -->
         <a href="booking.html">BOOKINGS</a>
         <a href="payment.html">CHECK OUT</a>
-        <select name="" id="sort">
+        <select name="a" id="sort">
             <option value="">Sort</option>
-            <option value="low">Low Price</option>
-            <option value="high">High Price</option>
+            <option value="low">Low to High</option>
+            <option value="high">High to Low</option>
 
         </select>
         
