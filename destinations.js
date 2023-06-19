@@ -60,12 +60,12 @@ let arr=[
         details:"Goecha La (el. 4940 mt or 16,207 ft) is a high mountain pass in Gyalshing district, Sikkim, India in the Himalaya range. The southeast face of Kanchenjunga, the world's third highest mountain, can be viewed from the pass, which is also a base camp for those aspiring to scale the mountain.",
         img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Kangch-Goechala.jpg/120px-Kangch-Goechala.jpg"
     },
-    // {
-    //     place:"",
-    //     price:0,
-    //     details:"",
-    //     img:""
-    // },
+    {
+        place:"Bengaluru",
+        price:8550,
+        details:"Bangalore Palace is a royal palace located in Bangalore, Karnataka, India, in an area that was owned by the Rev. John Garrett, the first principal of the Central High School in Bangalore, now famous as Central College.",
+        img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Bangalore_palace.jpg/120px-Bangalore_palace.jpg"
+    },
     // {
     //     place:"",
     //     price:0,
@@ -227,6 +227,7 @@ data.map(function(e){
         buypackage.push(e)
         localStorage.setItem("package",JSON.stringify(buypackage))
         // window.open("payment.html")
+        alert ("Package added to checkout")
     })
 
 })

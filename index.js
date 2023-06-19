@@ -47,12 +47,12 @@ let arr=[
         details:"Rajwada, also known as the Holkar Palace or Old Palace, is an important historical palace in Indore that was constructed by the Holkars of the Maratha empire, around 2 centuries ago. An example of the fine architectural skill and magnificence of those times, the palace is an impressive 7 storey structure",
         img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Rajwada_Indore_Diwali.jpg/1280px-Rajwada_Indore_Diwali.jpg"
     },
-    // {
-    //     place:"",
-    //     price:0,
-    //     details:"",
-    //     img:""
-    // },
+    {
+        place:"Bengaluru",
+        price:8550,
+        details:"Bangalore Palace is a royal palace located in Bangalore, Karnataka, India, in an area that was owned by the Rev. John Garrett, the first principal of the Central High School in Bangalore, now famous as Central College.",
+        img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Bangalore_palace.jpg/120px-Bangalore_palace.jpg"
+    },
     // {
     //     place:"",
     //     price:0,
@@ -179,3 +179,6 @@ data.map(function(e){
 
 })
 }
+let acc=document.getElementById("acc")
+let signup=JSON.parse(localStorage.getItem("signup")) || [];
+acc.innerText=signup[signup.length-1].name

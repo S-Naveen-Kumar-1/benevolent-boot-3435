@@ -66,12 +66,46 @@
         text-align: center;
         margin-right: 50px;
     }
+    #show>div>button:nth-child(5){
+background-color: green;
+color: antiquewhite;
+    }
     #search{
         width: 350px;
         text-align: center;
         border-radius: 10px;
         margin-right: 100px;
         height: 30px;
+    }
+    @media only screen and (max-width: 600px) {
+        #search{
+            display: none;
+        }
+#show{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+/* height: 1000px; */
+}     
+#show>div>p:nth-child(3){
+        height: 200px;
+        color: rgb(67, 65, 65);
+    }
+     
+    }
+    @media only screen and (max-width: 1000px) {
+        #search{
+            display: none;
+        }
+#show{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+/* height: 1000px; */
+}     
+#show>div>p:nth-child(3){
+        height: 200px;
+        color: rgb(67, 65, 65);
+    }
+     
     }
 </style>
 </head>
