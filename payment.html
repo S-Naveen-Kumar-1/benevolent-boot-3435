@@ -27,8 +27,20 @@
             border-radius: 50%;
             /* border: 1px solid red; */
             gap: 15px;
-            margin-left: 300px;
+            margin-left: 320px;
             margin-top: -27px;
+        }
+        #cart>div>button:nth-child(4){
+          color: rgb(242, 247, 242);
+          background-color: rgb(133, 239, 133);
+          border-radius: 5px;
+          margin-right: 5px;
+        }
+        #cart>div>button:nth-child(6){
+          color: rgb(242, 247, 242);
+          background-color: rgb(243, 110, 110);
+          border-radius: 5px;
+          margin-left: 5px;
         }
         #invoice>tbody>tr>td:nth-child(2){
         text-align: end;
@@ -242,7 +254,7 @@ display(buypackage)
         price.innerText="Price: "+e.price;
         img.setAttribute("src",e.img)
         plus.innerText="+";
-        person.innerText="No of Peroson's :"+e.quantity
+        person.innerText="No of Person's :"+e.quantity
         minus.innerText="-";
         delete1.setAttribute("src","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9k84pqqyAEtYysVu-ujy-yc-Q84_idaInZQ&usqp=CAU")
         card.append(img,place,price,plus,person,minus,delete1);
@@ -332,6 +344,7 @@ display(buypackage)
           return el.id != e.id
         })
         localStorage.setItem("package",JSON.stringify(buypackage))
+
         display(buypackage)
         pricetotal-=e.price*e.quantity
         total_price.innerText=pricetotal
@@ -339,7 +352,7 @@ display(buypackage)
     })      
       plus.addEventListener("click",function(){
         e.quantity++;
-        person.innerText="No of Peroson's :"+e.quantity
+        person.innerText="No of Person's :"+e.quantity
         price.innerText="Price: "+(e.price*e.quantity);
         pricetotal+=e.price*1
         total_price.innerText=pricetotal;
@@ -347,7 +360,7 @@ display(buypackage)
         minus.addEventListener("click",function(){
           if(e.quantity>1){
             e.quantity--;
-        person.innerText="No of Peroson's :"+e.quantity
+        person.innerText="No of Person's :"+e.quantity
         price.innerText="Price: "+(e.price*e.quantity);
         pricetotal-=e.price*1
         total_price.innerText=pricetotal;
